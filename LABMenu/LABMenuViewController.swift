@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate {
+open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate, LABMenuContainerDelegate {
     
     open var type: AnyClass! {
         return LABMenuViewController.self
@@ -104,9 +104,7 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate 
             menuView.show()
         }
     }
-}
-
-extension LABMenuViewController: LABMenuContainerDelegate {
+    
     open func selectItemAt(indexPath: IndexPath) {
         NSLog("item selected at section: \(indexPath.section),and row: \(indexPath.row)")
     }
