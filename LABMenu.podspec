@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LABMenu'
-  s.version          = '0.1.0'
+  s.version          = '0.0.1'
   s.summary          = 'Simple left menu.'
   s.description      = "Simple Left Menu. Just create your customize view, and put it in."
 
@@ -22,14 +22,14 @@ Pod::Spec.new do |s|
   s.author             = { "Leonardo Armero Barbosa" => "limpusra@gmail.com" }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.platform     = :ios, "10.0"
+  s.platform     = :ios, "11.0"
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4' }
 
   # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.source           = { :git => 'https://github.com/xrax/LABMenu.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '10.0'
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.source_files  = 'LABMenu/*.swift', 'LABMenu/*.xib'
