@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,10 +22,9 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0a8-Yv-QLb" userLabel="container">
                     <rect key="frame" x="0.0" y="0.0" width="290" height="667"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <viewLayoutGuide key="safeArea" id="gbG-y1-Hxx"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MENU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbb-NI-Ot5">
-                    <rect key="frame" x="120.5" y="64" width="49" height="21"/>
+                    <rect key="frame" x="120.5" y="44" width="49" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -34,15 +32,14 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="0a8-Yv-QLb" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="2Ec-Ii-uMs"/>
+                <constraint firstItem="0a8-Yv-QLb" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="2Ec-Ii-uMs"/>
                 <constraint firstAttribute="trailing" secondItem="0a8-Yv-QLb" secondAttribute="trailing" constant="10" id="DOE-cg-3hF"/>
                 <constraint firstItem="0a8-Yv-QLb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ipf-E8-rq8"/>
-                <constraint firstItem="lbb-NI-Ot5" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="44" id="YtQ-0a-OHX"/>
+                <constraint firstItem="lbb-NI-Ot5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="YtQ-0a-OHX"/>
                 <constraint firstItem="0a8-Yv-QLb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mnm-2b-Wgx"/>
                 <constraint firstItem="lbb-NI-Ot5" firstAttribute="centerX" secondItem="0a8-Yv-QLb" secondAttribute="centerX" id="r9b-zX-JAL"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="-94" y="54"/>
         </view>
     </objects>

@@ -14,7 +14,7 @@
 		A77DF0391FAA0EDC006A3885 /* LABMenuContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DF0381FAA0EDC006A3885 /* LABMenuContainer.swift */; };
 		A77DF03B1FAA0F01006A3885 /* LABMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DF03A1FAA0F01006A3885 /* LABMenuView.swift */; };
 		A77DF03D1FAA0F14006A3885 /* LABMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DF03C1FAA0F14006A3885 /* LABMenuViewController.swift */; };
-		A77DF03F1FAA0F50006A3885 /* MenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77DF03E1FAA0F50006A3885 /* MenuView.xib */; };
+		A77DF03F1FAA0F50006A3885 /* LABMenuView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A77DF03E1FAA0F50006A3885 /* LABMenuView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,7 @@
 		A77DF0381FAA0EDC006A3885 /* LABMenuContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABMenuContainer.swift; sourceTree = "<group>"; };
 		A77DF03A1FAA0F01006A3885 /* LABMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABMenuView.swift; sourceTree = "<group>"; };
 		A77DF03C1FAA0F14006A3885 /* LABMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABMenuViewController.swift; sourceTree = "<group>"; };
-		A77DF03E1FAA0F50006A3885 /* MenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuView.xib; sourceTree = "<group>"; };
+		A77DF03E1FAA0F50006A3885 /* LABMenuView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LABMenuView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,7 +87,7 @@
 				A77DF0381FAA0EDC006A3885 /* LABMenuContainer.swift */,
 				A77DF03A1FAA0F01006A3885 /* LABMenuView.swift */,
 				A77DF03C1FAA0F14006A3885 /* LABMenuViewController.swift */,
-				A77DF03E1FAA0F50006A3885 /* MenuView.xib */,
+				A77DF03E1FAA0F50006A3885 /* LABMenuView.xib */,
 			);
 			path = LABMenu;
 			sourceTree = "<group>";
@@ -195,7 +195,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A77DF03F1FAA0F50006A3885 /* MenuView.xib in Resources */,
+				A77DF03F1FAA0F50006A3885 /* LABMenuView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
