@@ -64,6 +64,12 @@ Create your custom menu view. For example (load from xib):
 
 ![xib file](https://github.com/xrax/LABMenu/blob/master/MenuView.png)
 
+Create a swift file for your Menu. Inherit it from 'LABMenuContainer'. Set File's Owner class as that menu class.
+
+![Files Owner](https://github.com/xrax/LABMenu/blob/master/FilesOwner.png)
+![Setting Class](https://github.com/xrax/LABMenu/blob/master/SettingClass.png)
+
+Implements the required init and override the 'init(delegate: LABMenuContainerDelegate)'. In overriden init call 'super.init(delegate:)' and call your xib with 'Bundle.main.loadNibNamed' function. Set the root view and implements all aspects and functionallities wanted in your Menu.
 ```swift
 import UIKit
 import LABMenu
@@ -127,7 +133,10 @@ extension MyMenu: UITableViewDataSource, UITableViewDelegate {
 }
 ```
 
-Then just inherit a containerViewController from 'LABMenuViewController', and override viewDidLoad:
+In your storyboard embed your "ContainerViewController" in a NavigationController, and create all view controllers neededs.
+![storyboard](https://github.com/xrax/LABMenu/blob/master/storyboard.png)
+
+Then just inherit the "ContainerViewController" from 'LABMenuViewController', and override viewDidLoad:
 
 ```swift
 class ViewController: LABMenuViewController {
@@ -138,7 +147,7 @@ class ViewController: LABMenuViewController {
 }
 ```
 
-In viewDidLoad function you must set your MenuController: 
+In viewDidLoad function you must set your Menu class: 
 
 ```swift
 	override func viewDidLoad() {
@@ -153,6 +162,12 @@ In viewDidLoad function you must set your MenuController:
 - setContentView, with your custom menu view.
 - setMenuButton, with your menu button image.
 - Instantiate your first ViewController and push it.
+
+
+![home](https://github.com/xrax/LABMenu/blob/master/HOME.png)
+![menu](https://github.com/xrax/LABMenu/blob/master/MENU.png)
+![profile](https://github.com/xrax/LABMenu/blob/master/PROFILE.png)
+
 
 ## To Consider
 
