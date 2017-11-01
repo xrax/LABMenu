@@ -1,29 +1,196 @@
-# LABMenu
+# EXMenuController
 
-[![CI Status](http://img.shields.io/travis/xrax/LABMenu.svg?style=flat)](https://travis-ci.org/xrax/LABMenu)
-[![Version](https://img.shields.io/cocoapods/v/LABMenu.svg?style=flat)](http://cocoapods.org/pods/LABMenu)
-[![License](https://img.shields.io/cocoapods/l/LABMenu.svg?style=flat)](http://cocoapods.org/pods/LABMenu)
-[![Platform](https://img.shields.io/cocoapods/p/LABMenu.svg?style=flat)](http://cocoapods.org/pods/LABMenu)
+Simple Left Menu. Just create your customized view and put it in.
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+<p align="center">
+    <a href="#requirements">Requirements</a> • <a href="#installation">Installation</a> • <a href="#usage">Usage</a> • <a href="#contribution">Contribution</a> • <a href="#contact">Contact</a> • <a href="#license-mit">License</a>
+</p>
 
 ## Requirements
 
+- iOS 10.0+
+- Xcode 8.0+
+- Swift 3.0+
+
 ## Installation
 
-LABMenu is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+#### CocoaPods
 
-```ruby
-pod 'LABMenu'
+Install CocoaPods if it is not already available:
+
+``` bash
+$ [sudo] gem install cocoapods
+$ pod setup
+```
+Go to the directory of your Xcode project, and Create and Edit your Podfile and add _EXMenuController_:
+
+``` bash
+$ cd /path/to/MyProject
+$ nano Podfile
+
+source 'http://192.168.3.53:8081/leonardo.armero/EXMenuController.git'
+
+platform :ios, '10.0'
+use_frameworks!
+
+target 'MyProject' do
+ pod 'EXMenuController'
+end
 ```
 
-## Author
+Install it into your project:
 
-xrax, leonardo.armero@exsis.com.co
+``` bash
+$ pod install
+```
 
-## License
+Open your project in Xcode from the .xcworkspace file (not the usual project file):
 
-LABMenu is available under the MIT license. See the LICENSE file for more info.
+``` bash
+$ open MyProject.xcworkspace
+```
+
+You can now `import EXMenuController` framework into your files.
+
+## Usage
+
+At first, import EXMenuController in all the classes that need it.
+
+```swift
+import EXMenuController
+```
+
+Create your custom menu view. For example (load from xib):
+
+```swift
+import UIKit
+import EXMenuController
+
+class MyMenu: MenuContainer {
+    
+    fileprivate let sections: [String] = ["Main", "Options"]
+    fileprivate let items: [[String]] = [["Home", "Profile"], ["Settings", "Options"]]
+    
+    @IBOutlet var view: UIView!
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override init(delegate: MenuContainerDelegate) {
+        super.init(delegate: delegate)
+        Bundle.main.loadNibNamed("MyMenu",
+                                 owner: self,
+                                 options: nil)
+        
+        self.view!.frame = CGRect(origin: CGPoint.zero,
+                                  size: frame.size)
+        self.addSubview(self.view!)
+        
+        self.delegate = delegate
+    }
+    
+    @IBAction func closeSession(_ sender: Any) {
+        NSLog("Session closed")
+    }
+}
+
+extension MyMenu: UITableViewDataSource, UITableViewDelegate {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return items.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return items[section].count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sections[section]
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .default,
+                                   reuseIdentifier: nil)
+        
+        cell.textLabel!.text = items[indexPath.section][indexPath.row]
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate.selectItemAt(indexPath: indexPath)
+    }
+}
+```
+
+Then just inherit a containerViewController from 'MenuViewController', and override viewDidLoad:
+
+```swift
+class ViewController: MenuViewController {
+
+	override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+```
+
+In viewDidLoad function you must set your MenuController: 
+
+```swift
+	override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        menuView.setContentView(contentView: MyMenu(delegate: self))
+        setMenuButton(image: #imageLiteral(resourceName: "icMenu"))
+
+        let homeViewController = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController")
+        self.pushViewController(homeViewController,
+                                animated: true)
+    }
+```
+
+- setContentView, with your custom menu view.
+- setMenuButton, with your menu button image.
+- Instantiate your first ViewController and push it.
+
+## To Consider
+
+- You must create a viewController as containerViewController. Then you must use the pushViewController function to push a new viewController into MenuController, or onBackClick to go back to the previous one.
+- To add a menu button you must call setMenuButton function in the containerViewController.
+- In containerViewController you must add the first (root) viewController using pushViewController function.
+- MenuController verifies that a viewController to push its not already in the current queue. All viewControllers must have a viewController class as owner.
+
+
+## Contribution
+
+All contributions are welcome. Just contact us.
+
+## Contact
+
+Leonardo Armero Barbosa - Exsis Software y Soluciones SAS
+ - [leonardo.armero@exsis.com.co](mailto:leonardo.armero@exsis.com.co)
+ - [limpusra@gmail.com](mailto:limpusra@gmail.com)
+
+## License (MIT)
+
+ MIT License
+
+Copyright (c) 2017 Leonardo Armero Barbosa
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -9,28 +9,30 @@
 Pod::Spec.new do |s|
   s.name             = 'LABMenu'
   s.version          = '0.1.0'
-  s.summary          = 'A short description of LABMenu.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.summary          = 'Simple left menu.'
+  s.description      = "Simple Left Menu. Just create your customize view, and put it in."
 
   s.homepage         = 'https://github.com/xrax/LABMenu'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+
+  # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'xrax' => 'leonardo.armero@exsis.com.co' }
+
+  # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.author             = { "Leonardo Armero Barbosa" => "limpusra@gmail.com" }
+
+  # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.platform     = :ios, "10.0"
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '4' }
+
+  # ――― Source Location ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.source           = { :git => 'https://github.com/xrax/LABMenu.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'LABMenu/Classes/**/*'
+  # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
+  s.source_files  = 'LABMenu/*.swift', 'LABMenu/*.xib'
   
   # s.resource_bundles = {
   #   'LABMenu' => ['LABMenu/Assets/*.png']
