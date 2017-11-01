@@ -28,8 +28,6 @@ Go to the directory of your Xcode project, and Create and Edit your Podfile and 
 $ cd /path/to/MyProject
 $ nano Podfile
 
-source 'https://github.com/xrax/LABMenu.git'
-
 platform :ios, '11.0'
 use_frameworks!
 
@@ -134,6 +132,7 @@ extension MyMenu: UITableViewDataSource, UITableViewDelegate {
 ```
 
 In your storyboard embed your "ContainerViewController" in a NavigationController, and create all view controllers neededs.
+
 ![storyboard](https://github.com/xrax/LABMenu/blob/master/storyboard.png)
 
 Then just inherit the "ContainerViewController" from 'LABMenuViewController', and override viewDidLoad:
