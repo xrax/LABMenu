@@ -28,17 +28,18 @@ extension UIBarButtonItem {
         }
         
         // Configuración del botón
-        internalButton.frame = CGRect(x: 0, y: 0, width:  UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
-        internalButton.backgroundColor = UIColor.clear
-        internalButton.setTitle(lbTitle, for: UIControlState())
-        internalButton.setTitleColor(titleColor, for: UIControlState())
-        internalButton.titleLabel?.textAlignment = NSTextAlignment.left
-        internalButton.titleLabel?.sizeToFit()
-        internalButton.titleLabel?.font = font
-        internalButton.sizeToFit()
         
         if image != nil {
             internalButton.setImage(image, for: UIControlState())
+        } else {
+            internalButton.frame = CGRect(x: 0, y: 0, width:  UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width)
+            internalButton.backgroundColor = UIColor.clear
+            internalButton.setTitle(lbTitle, for: UIControlState())
+            internalButton.setTitleColor(titleColor, for: UIControlState())
+            internalButton.titleLabel?.textAlignment = NSTextAlignment.left
+            internalButton.titleLabel?.sizeToFit()
+            internalButton.titleLabel?.font = font
+            internalButton.sizeToFit()
         }
         internalButton.addTarget(context, action: selector, for: UIControlEvents.touchDown)
         
