@@ -62,6 +62,8 @@ import LABMenu
 
 Create your custom menu view. For example (load from xib):
 
+![xib file](https://github.com/xrax/LABMenu/blob/master/MenuView.png)
+
 ```swift
 import UIKit
 import LABMenu
