@@ -1,4 +1,4 @@
-# EXMenuController
+# LABMenu
 
 Simple Left Menu. Just create your customized view and put it in.
 
@@ -22,19 +22,19 @@ Install CocoaPods if it is not already available:
 $ [sudo] gem install cocoapods
 $ pod setup
 ```
-Go to the directory of your Xcode project, and Create and Edit your Podfile and add _EXMenuController_:
+Go to the directory of your Xcode project, and Create and Edit your Podfile and add _LabMenu_:
 
 ``` bash
 $ cd /path/to/MyProject
 $ nano Podfile
 
-source 'http://192.168.3.53:8081/leonardo.armero/EXMenuController.git'
+source 'https://github.com/xrax/LABMenu.git'
 
-platform :ios, '10.0'
+platform :ios, '11.0'
 use_frameworks!
 
 target 'MyProject' do
- pod 'EXMenuController'
+ pod 'LABMenu', :git => 'https://github.com/xrax/LABMenu.git'
 end
 ```
 
@@ -50,34 +50,36 @@ Open your project in Xcode from the .xcworkspace file (not the usual project fil
 $ open MyProject.xcworkspace
 ```
 
-You can now `import EXMenuController` framework into your files.
+You can now `import LABMenu` framework into your files.
 
 ## Usage
 
-At first, import EXMenuController in all the classes that need it.
+At first, you will shall import LABMenu in all the classes that need it.
 
 ```swift
-import EXMenuController
+import LABMenu
 ```
 
 Create your custom menu view. For example (load from xib):
 
 ```swift
 import UIKit
-import EXMenuController
+import LABMenu
 
-class MyMenu: MenuContainer {
+class MyMenu: LABMenuContainer {
     
     fileprivate let sections: [String] = ["Main", "Options"]
     fileprivate let items: [[String]] = [["Home", "Profile"], ["Settings", "Options"]]
     
     @IBOutlet var view: UIView!
+    @IBOutlet weak var icUser: UIImageView!
+    @IBOutlet weak var icUserName: UILabel!
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override init(delegate: MenuContainerDelegate) {
+    override init(delegate: LABMenuContainerDelegate) {
         super.init(delegate: delegate)
         Bundle.main.loadNibNamed("MyMenu",
                                  owner: self,
@@ -123,10 +125,10 @@ extension MyMenu: UITableViewDataSource, UITableViewDelegate {
 }
 ```
 
-Then just inherit a containerViewController from 'MenuViewController', and override viewDidLoad:
+Then just inherit a containerViewController from 'LABMenuViewController', and override viewDidLoad:
 
 ```swift
-class ViewController: MenuViewController {
+class ViewController: LABMenuViewController {
 
 	override func viewDidLoad() {
         super.viewDidLoad()
@@ -142,10 +144,7 @@ In viewDidLoad function you must set your MenuController:
         
         menuView.setContentView(contentView: MyMenu(delegate: self))
         setMenuButton(image: #imageLiteral(resourceName: "icMenu"))
-
-        let homeViewController = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController")
-        self.pushViewController(homeViewController,
-                                animated: true)
+        navigateToHome()
     }
 ```
 
@@ -155,10 +154,10 @@ In viewDidLoad function you must set your MenuController:
 
 ## To Consider
 
-- You must create a viewController as containerViewController. Then you must use the pushViewController function to push a new viewController into MenuController, or onBackClick to go back to the previous one.
+- You must create a viewController as containerViewController. Then you must use the pushViewController function to push a new viewController into LABMenuContainer, or onBackClick to go back to the previous one.
 - To add a menu button you must call setMenuButton function in the containerViewController.
 - In containerViewController you must add the first (root) viewController using pushViewController function.
-- MenuController verifies that a viewController to push its not already in the current queue. All viewControllers must have a viewController class as owner.
+- LABMenuContainer verifies that a viewController to push its not already in the current queue. All viewControllers must have a viewController class as owner.
 
 
 ## Contribution
@@ -167,8 +166,7 @@ All contributions are welcome. Just contact us.
 
 ## Contact
 
-Leonardo Armero Barbosa - Exsis Software y Soluciones SAS
- - [leonardo.armero@exsis.com.co](mailto:leonardo.armero@exsis.com.co)
+Leonardo Armero Barbosa
  - [limpusra@gmail.com](mailto:limpusra@gmail.com)
 
 ## License (MIT)
