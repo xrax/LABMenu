@@ -40,7 +40,11 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
                                                                     font: UIFont.systemFont(ofSize: 12),
                                                                     inContext: self,
                                                                     selector: #selector(LABMenuViewController.toggleLeft))
-        self.navigationItem.leftBarButtonItem = menuButton
+        setMenuButton(button: menuButton)
+    }
+    
+    public func setMenuButton(button: UIBarButtonItem) {
+        self.navigationItem.leftBarButtonItem = button
         self.navigationItem.leftBarButtonItem!.tintColor = menuView.tint
     }
     
