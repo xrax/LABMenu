@@ -1,5 +1,6 @@
 # LABMenu
 
+
 Simple Left Menu. Just create your customized view and put it in.
 
 <p align="center">

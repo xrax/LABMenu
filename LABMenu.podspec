@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LABMenu'
-  s.version          = '0.1'
+  s.version          = '0.1.1'
   s.summary          = 'Simple left menu.'
   s.description      = "Simple Left Menu. Just create your customize menu view, and put it in."
 
