@@ -9,8 +9,8 @@ Simple Left Menu. Just create your customized view and put it in.
 ## Requirements
 
 - iOS 10.0+
-- Xcode 8.0+
-- Swift 3.0+
+- Xcode 9.0+
+- Swift 4.0+
 
 ## Installation
 

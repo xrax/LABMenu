@@ -8,12 +8,12 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LABMenu'
-  s.version          = '0.0.1'
+  s.version          = '0.1'
   s.summary          = 'Simple left menu.'
-  s.description      = "Simple Left Menu. Just create your customize view, and put it in."
+  s.description      = "Simple Left Menu. Just create your customize menu view, and put it in."
 
   s.homepage         = 'https://github.com/xrax/LABMenu'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
+  s.screenshots      = 'https://github.com/xrax/LABMenu/blob/master/MENU.png', 'https://github.com/xrax/LABMenu/blob/master/NMenu.png'
 
   # ―――  Spec License  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
