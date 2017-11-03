@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 extension UIBarButtonItem {
-    class func barButton(_ title: String?,
+    static func barButton(_ title: String?,
                          image: UIImage?,
                          titleColor: UIColor,
                          font: UIFont,
