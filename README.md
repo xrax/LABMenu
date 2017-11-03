@@ -153,13 +153,17 @@ In viewDidLoad function you must set your Menu class:
         super.viewDidLoad()
         
         menuView.setContentView(contentView: MyMenu(delegate: self))
+        // Just set the image in the Menu BarButtonItem
         setMenuButton(image: #imageLiteral(resourceName: "icMenu"))
+        // Or this to set a customized BarButtonItem
+        setMenuButton(button: UIBarButtonItem(customView: myCustomizedView))
         navigateToHome()
     }
 ```
 
-- setContentView, with your custom menu view.
-- setMenuButton, with your menu button image.
+- setContentView(contentView:), with your custom menu view.
+- setMenuButton(image:), with your menu button image.
+- setMenuButton(button:), with your customized menu button.
 - Instantiate your first ViewController and push it.
 
 
