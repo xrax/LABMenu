@@ -170,7 +170,7 @@ In viewDidLoad function you must set your Menu class:
 ![home](https://github.com/xrax/LABMenu/blob/master/HOME.png)
 ![menu](https://github.com/xrax/LABMenu/blob/master/MENU.png)
 ![profile](https://github.com/xrax/LABMenu/blob/master/PROFILE.png)
-
+![nmenu](https://github.com/xrax/LABMenu/blob/master/NMenu.png)
 
 ## To Consider
 
