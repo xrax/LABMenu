@@ -21,16 +21,18 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        menuView = LABMenuView(mainColor: UIColor(red: 51/255,
-                                               green: 45/255,
-                                               blue: 42/255,
-                                               alpha: 1),
+        menuView = LABMenuView(mainColor: UIColor.gray,
                             tint: UIColor.white)
         
         self.navigationController!.navigationBar.barStyle = .blackTranslucent
         self.navigationController!.navigationBar.backgroundColor = menuView.mainColor
         
         self.view.addSubview(menuView)
+    }
+    
+    open override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        menuView.alpha = 1
     }
     
     public func setMenuButton(image: UIImage) {

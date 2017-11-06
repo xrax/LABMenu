@@ -24,8 +24,6 @@ open class LABMenuView: UIView {
     open var mainColor: UIColor!
     open var tint: UIColor!
     
-    // private var panGesture: UIPanGestureRecognizer!
-    
     private struct LeftPanState {
         static var frameAtStartOfPan: CGRect = CGRect.zero
         static var startPointOfPan: CGPoint = CGPoint.zero
@@ -54,7 +52,7 @@ open class LABMenuView: UIView {
         
         self.view!.frame = CGRect(origin: CGPoint.zero,
                                   size: frame.size)
-        
+        self.alpha = 0
         self.addSubview(self.view!)
     }
     
