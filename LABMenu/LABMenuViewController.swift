@@ -17,15 +17,17 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     }
     open var menuView: LABMenuView!
     open var internalNavigationController: UINavigationController!
+    open var barColor = UIColor.gray
+    open var barTintColor = UIColor.white
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         
-        menuView = LABMenuView(mainColor: UIColor.gray,
-                            tint: UIColor.white)
+        menuView = LABMenuView(mainColor: barColor,
+                            tint: barTintColor)
         
         self.navigationController!.navigationBar.barStyle = .blackTranslucent
-        self.navigationController!.navigationBar.backgroundColor = menuView.mainColor
+        self.navigationController!.navigationBar.backgroundColor = barColor
         
         self.view.addSubview(menuView)
     }
@@ -33,6 +35,11 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     open override func viewWillAppear(_ animated: Bool) {
         self.navigationController!.isNavigationBarHidden = false
         super.viewWillAppear(animated)
+        
+        navigationController!.view.backgroundColor = barColor
+        navigationController!.navigationBar.backgroundColor = barColor
+        navigationController!.navigationBar.subviews[0].subviews[0].isHidden = true
+        navigationController!.navigationBar.subviews[0].subviews[1].isHidden = true
     }
     
     open override func viewDidAppear(_ animated: Bool) {
@@ -82,6 +89,7 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
             internalNavigationController.view.frame = self.view.bounds
             self.view.addSubview(internalNavigationController.view)
             internalNavigationController.didMove(toParentViewController: self)
+            internalNavigationController.isNavigationBarHidden = true
             
             self.view.bringSubview(toFront: menuView)
         } else {
