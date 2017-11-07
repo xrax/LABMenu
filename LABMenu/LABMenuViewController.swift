@@ -36,10 +36,23 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
         self.navigationController!.isNavigationBarHidden = false
         super.viewWillAppear(animated)
         
+        if barColor == .clear || barColor == .white {
+            navigationController!.navigationBar.barStyle = .default
+        } else {
+            navigationController!.navigationBar.barStyle = .blackTranslucent
+        }
+        
         navigationController!.view.backgroundColor = barColor
         navigationController!.navigationBar.backgroundColor = barColor
         navigationController!.navigationBar.subviews[0].subviews[0].isHidden = true
         navigationController!.navigationBar.subviews[0].subviews[1].isHidden = true
+        
+        let statusBarBackground = UIView(frame: CGRect(x: 0,
+                                                       y: 0,
+                                                       width: navigationController!.navigationBar.frame.width,
+                                                       height: navigationController!.navigationBar.frame.origin.y))
+        statusBarBackground.backgroundColor = barColor
+        view.addSubview(statusBarBackground)
     }
     
     open override func viewDidAppear(_ animated: Bool) {
