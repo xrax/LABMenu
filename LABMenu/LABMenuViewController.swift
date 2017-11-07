@@ -30,6 +30,11 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
         self.view.addSubview(menuView)
     }
     
+    open override func viewWillAppear(_ animated: Bool) {
+        self.navigationController!.isNavigationBarHidden = false
+        super.viewWillAppear(animated)
+    }
+    
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         menuView.alpha = 1
