@@ -25,7 +25,7 @@ open class LABMenuContainer: UIView {
         self.delegate = delegate
         super.init(frame: CGRect(x: 0,
                                  y: 0,
-                                 width: LABMenuView.LABMenuOptions.width,
+                                 width: LABMenuView.LABMenuOptions.width - 10, // 10 of swipe space in container
                                  height: UIScreen.main.bounds.height))
     }
 }

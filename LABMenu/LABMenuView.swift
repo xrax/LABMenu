@@ -52,7 +52,6 @@ open class LABMenuView: UIView {
         
         self.view!.frame = CGRect(origin: CGPoint.zero,
                                   size: self.frame.size)
-        self.container.frame = self.view.frame
         self.alpha = 0
         self.addSubview(self.view!)
     }
