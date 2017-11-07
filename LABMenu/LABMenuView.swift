@@ -62,7 +62,6 @@ open class LABMenuView: UIView {
         
         contentView.addGestureRecognizer(panGesture)
         self.view.addGestureRecognizer(panGesture)
-        contentView.frame = self.container.frame
         self.container.addSubview(contentView)
     }
     
