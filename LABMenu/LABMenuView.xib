@@ -20,11 +20,11 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0a8-Yv-QLb" userLabel="container">
-                    <rect key="frame" x="0.0" y="0.0" width="300" height="667"/>
+                    <rect key="frame" x="0.0" y="0.0" width="290" height="667"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MENU" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbb-NI-Ot5">
-                    <rect key="frame" x="125.5" y="44" width="49" height="21"/>
+                    <rect key="frame" x="120.5" y="44" width="49" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -33,7 +33,7 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="0a8-Yv-QLb" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="2Ec-Ii-uMs"/>
-                <constraint firstAttribute="trailing" secondItem="0a8-Yv-QLb" secondAttribute="trailing" id="DOE-cg-3hF"/>
+                <constraint firstAttribute="trailing" secondItem="0a8-Yv-QLb" secondAttribute="trailing" constant="10" id="DOE-cg-3hF"/>
                 <constraint firstItem="0a8-Yv-QLb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ipf-E8-rq8"/>
                 <constraint firstItem="lbb-NI-Ot5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="44" id="YtQ-0a-OHX"/>
                 <constraint firstItem="0a8-Yv-QLb" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="mnm-2b-Wgx"/>
