@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A718304E1FB38E450013C34D /* LABMenuUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A718304D1FB38E450013C34D /* LABMenuUtils.swift */; };
 		A77DF0261FAA0CAF006A3885 /* LABMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77DF01C1FAA0CAF006A3885 /* LABMenu.framework */; };
 		A77DF02B1FAA0CAF006A3885 /* LABMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DF02A1FAA0CAF006A3885 /* LABMenuTests.swift */; };
 		A77DF02D1FAA0CAF006A3885 /* LABMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = A77DF01F1FAA0CAF006A3885 /* LABMenu.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A77DF0371FAA0EBD006A3885 /* LABExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DF0361FAA0EBD006A3885 /* LABExtensions.swift */; };
+		A77DF0371FAA0EBD006A3885 /* LABMenuExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DF0361FAA0EBD006A3885 /* LABMenuExtensions.swift */; };
 		A77DF0391FAA0EDC006A3885 /* LABMenuContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DF0381FAA0EDC006A3885 /* LABMenuContainer.swift */; };
 		A77DF03B1FAA0F01006A3885 /* LABMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DF03A1FAA0F01006A3885 /* LABMenuView.swift */; };
 		A77DF03D1FAA0F14006A3885 /* LABMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DF03C1FAA0F14006A3885 /* LABMenuViewController.swift */; };
@@ -28,13 +29,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A718304D1FB38E450013C34D /* LABMenuUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABMenuUtils.swift; sourceTree = "<group>"; };
 		A77DF01C1FAA0CAF006A3885 /* LABMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LABMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77DF01F1FAA0CAF006A3885 /* LABMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LABMenu.h; sourceTree = "<group>"; };
 		A77DF0201FAA0CAF006A3885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A77DF0251FAA0CAF006A3885 /* LABMenuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LABMenuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77DF02A1FAA0CAF006A3885 /* LABMenuTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABMenuTests.swift; sourceTree = "<group>"; };
 		A77DF02C1FAA0CAF006A3885 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A77DF0361FAA0EBD006A3885 /* LABExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABExtensions.swift; sourceTree = "<group>"; };
+		A77DF0361FAA0EBD006A3885 /* LABMenuExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABMenuExtensions.swift; sourceTree = "<group>"; };
 		A77DF0381FAA0EDC006A3885 /* LABMenuContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABMenuContainer.swift; sourceTree = "<group>"; };
 		A77DF03A1FAA0F01006A3885 /* LABMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABMenuView.swift; sourceTree = "<group>"; };
 		A77DF03C1FAA0F14006A3885 /* LABMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABMenuViewController.swift; sourceTree = "<group>"; };
@@ -83,11 +85,12 @@
 			children = (
 				A77DF01F1FAA0CAF006A3885 /* LABMenu.h */,
 				A77DF0201FAA0CAF006A3885 /* Info.plist */,
-				A77DF0361FAA0EBD006A3885 /* LABExtensions.swift */,
+				A77DF0361FAA0EBD006A3885 /* LABMenuExtensions.swift */,
 				A77DF0381FAA0EDC006A3885 /* LABMenuContainer.swift */,
 				A77DF03A1FAA0F01006A3885 /* LABMenuView.swift */,
 				A77DF03C1FAA0F14006A3885 /* LABMenuViewController.swift */,
 				A77DF03E1FAA0F50006A3885 /* LABMenuView.xib */,
+				A718304D1FB38E450013C34D /* LABMenuUtils.swift */,
 			);
 			path = LABMenu;
 			sourceTree = "<group>";
@@ -216,7 +219,8 @@
 				A77DF0391FAA0EDC006A3885 /* LABMenuContainer.swift in Sources */,
 				A77DF03D1FAA0F14006A3885 /* LABMenuViewController.swift in Sources */,
 				A77DF03B1FAA0F01006A3885 /* LABMenuView.swift in Sources */,
-				A77DF0371FAA0EBD006A3885 /* LABExtensions.swift in Sources */,
+				A77DF0371FAA0EBD006A3885 /* LABMenuExtensions.swift in Sources */,
+				A718304E1FB38E450013C34D /* LABMenuUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

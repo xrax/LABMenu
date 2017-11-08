@@ -10,15 +10,22 @@ import Foundation
 
 import UIKit
 
+protocol LABMenuViewDelegate {
+    func onPan(toProgress progress: CGFloat)
+    func onShow()
+    func onHide()
+}
+
 open class LABMenuView: UIView {
     
     public struct LABMenuOptions {
         public static var width: CGFloat = UIScreen.main.bounds.width * 0.8
-        public static var animationDuration: TimeInterval = 0.4
+        public static var animationDuration: TimeInterval = 0.3
     }
     
     private let minOrigin: CGFloat = -LABMenuOptions.width + 10
     private let maxOrigin: CGFloat = 0.0
+    private var delegate: LABMenuViewDelegate!
     
     open var isShowing: Bool = false
     open var mainColor: UIColor!
@@ -37,9 +44,10 @@ open class LABMenuView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public init(mainColor: UIColor, tint: UIColor) {
+    init(mainColor: UIColor, tint: UIColor, delegate: LABMenuViewDelegate) {
         self.mainColor = mainColor
         self.tint = tint
+        self.delegate = delegate
         
         super.init(frame: CGRect(x: minOrigin,
                                  y: 0,
@@ -66,8 +74,10 @@ open class LABMenuView: UIView {
     }
     
     public func show() {
+        self.alpha = 1
         UIView.animate(withDuration: LABMenuOptions.animationDuration,
                        animations: {
+                        self.delegate.onShow()
                         self.frame.origin.x = 0
         }, completion: {_ in
             self.isShowing = true
@@ -77,9 +87,11 @@ open class LABMenuView: UIView {
     public func hide() {
         UIView.animate(withDuration: LABMenuOptions.animationDuration,
                        animations: {
+                        self.delegate.onHide()
                         self.frame.origin.x = self.minOrigin
         }, completion: {_ in
             self.isShowing = false
+            self.alpha = 0
         })
     }
     
@@ -105,6 +117,9 @@ open class LABMenuView: UIView {
             
             let translation: CGPoint = sender.translation(in: sender.view!)
             self.frame = applyTopTransition(translation, toFrame: LeftPanState.frameAtStartOfPan)
+            delegate.onPan(toProgress: LABMenuUtils.getPercentWith(min: minOrigin,
+                                                                   max: maxOrigin,
+                                                                   num: frame.origin.x))
         case .ended, .cancelled:
             if LeftPanState.lastState != .changed {
                 return

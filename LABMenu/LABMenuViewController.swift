@@ -10,7 +10,7 @@ import Foundation
 
 import UIKit
 
-open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate, LABMenuContainerDelegate {
+open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate, LABMenuContainerDelegate, LABMenuViewDelegate {
     
     open var type: AnyClass! {
         return LABMenuViewController.self
@@ -19,15 +19,25 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     open var internalNavigationController: UINavigationController!
     open var barColor = UIColor.gray
     open var barTintColor = UIColor.white
+    private var handlerView: UIView!
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         
         menuView = LABMenuView(mainColor: barColor,
-                            tint: barTintColor)
+                               tint: barTintColor,
+                               delegate: self)
         
         self.navigationController!.navigationBar.barStyle = .blackTranslucent
         self.navigationController!.navigationBar.backgroundColor = barColor
+        self.view.backgroundColor = .black
+        
+        // touch delegate view
+        handlerView = UIView(frame: view.frame)
+        handlerView.backgroundColor = .clear
+        handlerView.isHidden = true
+        handlerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LABMenuViewController.outsideMenuClick)))
+        self.view.addSubview(handlerView)
         
         self.view.addSubview(menuView)
     }
@@ -116,6 +126,9 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
             internalNavigationController.pushViewController(viewController, animated: animated)
             addBackButton()
         }
+        
+        self.view.bringSubview(toFront: handlerView)
+        self.view.bringSubview(toFront: menuView)
     }
     
     /**
@@ -140,4 +153,40 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     open func selectItemAt(indexPath: IndexPath) {
         NSLog("item selected at section: \(indexPath.section),and row: \(indexPath.row)")
     }
+    
+    @objc func outsideMenuClick() {
+        menuView.hide()
+    }
+    
+    func onShow() {
+        UIView.animate(withDuration: LABMenuView.LABMenuOptions.animationDuration,
+                       animations: {
+                        self.onPan(toProgress: 1)
+        })
+    }
+    
+    func onHide() {
+        UIView.animate(withDuration: LABMenuView.LABMenuOptions.animationDuration,
+                       animations: {
+                        self.onPan(toProgress: 0)
+        })
+    }
+    
+    func onPan(toProgress progress: CGFloat) {
+        if progress == 0 {
+            menuView.alpha = 0
+        } else if menuView.alpha == 0 {
+            menuView.alpha = 1
+        }
+        
+        let opacity = Float(LABMenuUtils.getPercentWith(min: 4, max: 0, num: progress))
+        let scale = LABMenuUtils.getPercentWith(min: 20, max: 0, num: progress)
+        let lastView = internalNavigationController.viewControllers.last!.view!
+        lastView.layer.opacity = opacity
+        lastView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        
+        handlerView.isHidden = progress != 1
+    }
 }
+
+
