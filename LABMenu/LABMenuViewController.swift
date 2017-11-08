@@ -174,9 +174,9 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     
     func onPan(toProgress progress: CGFloat) {
         if progress == 0 {
-            menuView.alpha = 0
-        } else if menuView.alpha == 0 {
-            menuView.alpha = 1
+            menuView.container.alpha = 0
+        } else if menuView.container.alpha == 0 {
+            menuView.container.alpha = 1
         }
         
         let opacity = Float(LABMenuUtils.getPercentWith(min: 4, max: 0, num: progress))

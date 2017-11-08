@@ -74,7 +74,7 @@ open class LABMenuView: UIView {
     }
     
     public func show() {
-        self.alpha = 1
+        container.alpha = 1
         UIView.animate(withDuration: LABMenuOptions.animationDuration,
                        animations: {
                         self.delegate.onShow()
@@ -91,7 +91,7 @@ open class LABMenuView: UIView {
                         self.frame.origin.x = self.minOrigin
         }, completion: {_ in
             self.isShowing = false
-            self.alpha = 0
+            self.container.alpha = 0
         })
     }
     
@@ -156,3 +156,4 @@ open class LABMenuView: UIView {
         return newFrame
     }
 }
+
