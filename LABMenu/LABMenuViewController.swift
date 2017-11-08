@@ -34,7 +34,7 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
         
         // touch delegate view
         handlerView = UIView(frame: view.frame)
-        handlerView.backgroundColor = .clear
+        handlerView.backgroundColor = .black
         handlerView.isHidden = true
         handlerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LABMenuViewController.outsideMenuClick)))
         self.view.addSubview(handlerView)
@@ -175,17 +175,21 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     func onPan(toProgress progress: CGFloat) {
         if progress == 0 {
             menuView.container.alpha = 0
-        } else if menuView.container.alpha == 0 {
-            menuView.container.alpha = 1
+            handlerView.isHidden = true
+        } else {
+            if menuView.container.alpha == 0  {
+                menuView.container.alpha = 1
+            }
+            if handlerView.isHidden {
+                handlerView.isHidden = false
+            }
         }
         
-        let opacity = Float(LABMenuUtils.getPercentWith(min: 4, max: 0, num: progress))
+        let opacity = LABMenuUtils.getPercentWith(min: 0, max: 2, num: progress)
         let scale = LABMenuUtils.getPercentWith(min: 20, max: 0, num: progress)
         let lastView = internalNavigationController.viewControllers.last!.view!
-        lastView.layer.opacity = opacity
+        handlerView.alpha = opacity
         lastView.transform = CGAffineTransform(scaleX: scale, y: scale)
-        
-        handlerView.isHidden = progress != 1
     }
 }
 
