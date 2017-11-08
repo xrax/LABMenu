@@ -36,6 +36,7 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
         handlerView = UIView(frame: view.frame)
         handlerView.backgroundColor = .black
         handlerView.isHidden = true
+        handlerView.alpha = 0
         handlerView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(LABMenuViewController.outsideMenuClick)))
         self.view.addSubview(handlerView)
         
