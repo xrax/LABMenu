@@ -19,13 +19,21 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     open var internalNavigationController: UINavigationController!
     open var barColor = UIColor.gray
     open var barTintColor = UIColor.white
+    open var menuProportionalWidth: NSNumber?
     private var handlerView: UIView!
     
     override open func viewDidLoad() {
         super.viewDidLoad()
         
+        // menuView Settings
+        var widthMenu: CGFloat?
+        let proportionalWidth = menuProportionalWidth as? CGFloat
+        if proportionalWidth != nil && proportionalWidth! >= 0 && proportionalWidth! <= 1 {
+            widthMenu = UIScreen.main.bounds.width * proportionalWidth!
+        }
         menuView = LABMenuView(mainColor: barColor,
                                tint: barTintColor,
+                               widthMenu: widthMenu,
                                delegate: self)
         
         self.navigationController!.navigationBar.barStyle = .blackTranslucent

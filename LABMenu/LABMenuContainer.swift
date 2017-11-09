@@ -21,11 +21,14 @@ open class LABMenuContainer: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public init(delegate: LABMenuContainerDelegate) {
+    public init(menuProportionalWidth: NSNumber, delegate: LABMenuContainerDelegate) {
         self.delegate = delegate
+        let menuWidth = UIScreen.main.bounds.width * (menuProportionalWidth as! CGFloat)
         super.init(frame: CGRect(x: 0,
                                  y: 0,
-                                 width: LABMenuView.LABMenuOptions.width - 10, // 10 of swipe space in container
-                                 height: UIScreen.main.bounds.height))
+                                 width: menuWidth - 10, // 10 of swipe space in container
+            height: UIScreen.main.bounds.height))
     }
 }
+
+

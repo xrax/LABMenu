@@ -19,11 +19,12 @@ protocol LABMenuViewDelegate {
 open class LABMenuView: UIView {
     
     public struct LABMenuOptions {
-        public static var width: CGFloat = UIScreen.main.bounds.width * 0.8
+        public static var defaultWidthMenu: CGFloat = UIScreen.main.bounds.width * 0.8
         public static var animationDuration: TimeInterval = 0.3
     }
     
-    private let minOrigin: CGFloat = -LABMenuOptions.width + 10
+    var widthMenu: CGFloat = LABMenuOptions.defaultWidthMenu
+    private var minOrigin: CGFloat!
     private let maxOrigin: CGFloat = 0.0
     private var delegate: LABMenuViewDelegate!
     
@@ -44,14 +45,24 @@ open class LABMenuView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(mainColor: UIColor, tint: UIColor, delegate: LABMenuViewDelegate) {
+    init(mainColor: UIColor,
+         tint: UIColor,
+         widthMenu: CGFloat?,
+         delegate: LABMenuViewDelegate)
+    {
         self.mainColor = mainColor
         self.tint = tint
         self.delegate = delegate
         
+        if widthMenu != nil {
+            self.widthMenu = widthMenu!
+        }
+        
+        self.minOrigin = -self.widthMenu + 10
+        
         super.init(frame: CGRect(x: minOrigin,
                                  y: 0,
-                                 width: LABMenuOptions.width,
+                                 width: self.widthMenu,
                                  height: UIScreen.main.bounds.height))
         
         Bundle(for: LABMenuView.self).loadNibNamed("LABMenuView",
@@ -78,7 +89,7 @@ open class LABMenuView: UIView {
         UIView.animate(withDuration: LABMenuOptions.animationDuration,
                        animations: {
                         self.delegate.onShow()
-                        self.frame.origin.x = 0
+                        self.frame.origin.x = self.maxOrigin
         }, completion: {_ in
             self.isShowing = true
         })
