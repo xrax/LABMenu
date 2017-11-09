@@ -15,13 +15,21 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     open var type: AnyClass! {
         return LABMenuViewController.self
     }
+    public enum ButtonPosition {
+        case left
+        case right
+    }
     open var menuView: LABMenuView!
     open var internalNavigationController: UINavigationController!
     open var barColor = UIColor.gray
     open var barTintColor = UIColor.white
     open var menuProportionalWidth: NSNumber?
     open var hideMenuButtonWhenShow: Bool = false
+    open var backPosition: ButtonPosition = .right
     private var handlerView: UIView!
+    
+    private var backButton: UIBarButtonItem!
+    private var menuButton: UIBarButtonItem!
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -81,33 +89,44 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     }
     
     public func setMenuButton(image: UIImage) {
-        let menuButton: UIBarButtonItem = UIBarButtonItem.barButton(nil,
-                                                                    image: image,
-                                                                    titleColor: menuView.tint,
-                                                                    font: UIFont.systemFont(ofSize: 12),
-                                                                    inContext: self,
-                                                                    selector: #selector(LABMenuViewController.toggleLeft))
-        setMenuButton(button: menuButton)
+        setMenuButton(button: UIBarButtonItem.barButton(nil,
+                                                        image: image,
+                                                        titleColor: menuView.tint,
+                                                        font: UIFont.systemFont(ofSize: 12),
+                                                        inContext: self,
+                                                        selector: #selector(LABMenuViewController.toggleLeft)))
     }
     
     public func setMenuButton(button: UIBarButtonItem) {
+        self.menuButton = button
         self.navigationItem.leftBarButtonItem = button
         self.navigationItem.leftBarButtonItem!.tintColor = menuView.tint
     }
     
     private func addBackButton() {
-        if self.navigationItem.rightBarButtonItem != nil {
-            return
-        }
         
-        let backButton = UIBarButtonItem.barButton(nil,
-                                                   image: nil,
-                                                   titleColor: menuView.tint,
-                                                   font: UIFont.systemFont(ofSize: 12),
-                                                   inContext: self,
-                                                   selector: #selector(LABMenuViewController.onBackClick))
-        self.navigationItem.rightBarButtonItem = backButton
-        self.navigationItem.rightBarButtonItem!.tintColor = menuView.tint
+        backButton = UIBarButtonItem.barButton(nil,
+                                               image: nil,
+                                               titleColor: menuView.tint,
+                                               font: UIFont.systemFont(ofSize: 12),
+                                               inContext: self,
+                                               selector: #selector(LABMenuViewController.onBackClick))
+        switch backPosition {
+        case .left:
+            // Button shall change with menuButton when open or close a VC
+            navigationItem.leftBarButtonItem = backButton
+            navigationItem.leftBarButtonItem!.tintColor = menuView.tint
+            break
+        case .right:
+            // Already exist a rightBarButtonItem, do nothing.
+            if navigationItem.rightBarButtonItem != nil {
+                return
+            }
+            
+            navigationItem.rightBarButtonItem = backButton
+            navigationItem.rightBarButtonItem!.tintColor = menuView.tint
+            break
+        }
     }
     
     private func removeBackButton() {
@@ -148,7 +167,16 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
         internalNavigationController.popViewController(animated: true)
         
         if internalNavigationController.viewControllers.count == 1 {
-            removeBackButton()
+            switch backPosition {
+            case .left:
+                menuButton.customView!.alpha = 1
+                navigationItem.leftBarButtonItem = menuButton
+                break
+            case .right:
+                removeBackButton()
+                break
+            }
+            
         }
     }
     
