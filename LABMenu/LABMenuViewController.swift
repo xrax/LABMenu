@@ -20,6 +20,7 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     open var barColor = UIColor.gray
     open var barTintColor = UIColor.white
     open var menuProportionalWidth: NSNumber?
+    open var hideMenuButtonWhenShow: Bool = false
     private var handlerView: UIView!
     
     override open func viewDidLoad() {
@@ -194,11 +195,16 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
             }
         }
         
-        let opacity = LABMenuUtils.getPercentWith(min: 0, max: 2, num: progress)
+        let alpha = LABMenuUtils.getPercentWith(min: 0, max: 2, num: progress)
         let scale = LABMenuUtils.getPercentWith(min: 20, max: 0, num: progress)
         let lastView = internalNavigationController.viewControllers.last!.view!
-        handlerView.alpha = opacity
+        handlerView.alpha = alpha
         lastView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        
+        if hideMenuButtonWhenShow {
+            let buttonAlpha = LABMenuUtils.getPercentWith(min: 1, max: 0, num: progress)
+            navigationItem.leftBarButtonItem?.customView?.alpha = buttonAlpha
+        }
     }
 }
 
