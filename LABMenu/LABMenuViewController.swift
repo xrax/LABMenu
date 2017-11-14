@@ -28,6 +28,9 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     open var backPosition: ButtonPosition = .right
     private var handlerView: UIView!
     
+    // true to pop back to a selected viewController
+    open var shouldNavigateToPreviousViewController: Bool = false
+    
     private var backButton: UIBarButtonItem!
     private var menuButton: UIBarButtonItem!
     
@@ -155,6 +158,10 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
             for queueViewController in internalNavigationController.viewControllers
                 where object_getClassName(queueViewController) == object_getClassName(viewController)
             {
+                if shouldNavigateToPreviousViewController {
+                    internalNavigationController.popToViewController(queueViewController, animated: true)
+                    removeBackButton()
+                }
                 return
             }
             
@@ -177,6 +184,7 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
             case .left:
                 menuButton.customView!.alpha = 1
                 navigationItem.leftBarButtonItem = menuButton
+                menuView.isHidden = false
                 break
             case .right:
                 removeBackButton()
