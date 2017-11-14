@@ -103,14 +103,20 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
         self.navigationItem.leftBarButtonItem!.tintColor = menuView.tint
     }
     
+    public func setBackButton(image: UIImage) {
+        setBackButton(button: UIBarButtonItem.barButton(nil,
+                                                        image: image,
+                                                        titleColor: menuView.tint,
+                                                        font: UIFont.systemFont(ofSize: 12),
+                                                        inContext: self,
+                                                        selector: #selector(LABMenuViewController.onBackClick)))
+    }
+    
+    public func setBackButton(button: UIBarButtonItem) {
+        self.backButton = button
+    }
+    
     private func addBackButton() {
-        
-        backButton = UIBarButtonItem.barButton(nil,
-                                               image: nil,
-                                               titleColor: menuView.tint,
-                                               font: UIFont.systemFont(ofSize: 12),
-                                               inContext: self,
-                                               selector: #selector(LABMenuViewController.onBackClick))
         switch backPosition {
         case .left:
             // Button shall change with menuButton when open or close a VC
@@ -232,8 +238,7 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
         if hideMenuButtonWhenShow {
             let buttonAlpha = LABMenuUtils.getPercentWith(min: 1, max: 0, num: progress)
             navigationItem.leftBarButtonItem?.customView?.alpha = buttonAlpha
+            navigationController!.navigationBar.subviews[2].alpha = buttonAlpha
         }
     }
 }
-
-
