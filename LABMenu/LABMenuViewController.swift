@@ -107,23 +107,26 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     }
     
     public func setBackButton(image: UIImage) {
-        backButton = UIBarButtonItem.barButton(nil,
-                                               image: image,
-                                               titleColor: menuView.tint,
-                                               font: UIFont.systemFont(ofSize: 12),
-                                               inContext: self,
-                                               selector: #selector(LABMenuViewController.onBackClick))
+        setBackButton(button: UIBarButtonItem.barButton(nil,
+                                                        image: image,
+                                                        titleColor: menuView.tint,
+                                                        font: UIFont.systemFont(ofSize: 12),
+                                                        inContext: self,
+                                                        selector: #selector(LABMenuViewController.onBackClick)))
     }
     
+    public func setBackButton(button: UIBarButtonItem) {
+        self.backButton = button
+    }
     
     private func addBackButton() {
         if backButton == nil {
-            backButton = UIBarButtonItem.barButton(nil,
-                                                   image: nil,
-                                                   titleColor: menuView.tint,
-                                                   font: UIFont.systemFont(ofSize: 12),
-                                                   inContext: self,
-                                                   selector: #selector(LABMenuViewController.onBackClick))
+            setBackButton(button: UIBarButtonItem.barButton(nil,
+                                                            image: nil,
+                                                            titleColor: menuView.tint,
+                                                            font: UIFont.systemFont(ofSize: 12),
+                                                            inContext: self,
+                                                            selector: #selector(LABMenuViewController.onBackClick)))
         }
         
         switch backPosition {

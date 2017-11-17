@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'LABMenu'
-  s.version          = '0.1.2'
+  s.version          = '0.2'
   s.summary          = 'Simple left menu.'
   s.description      = "Simple Left Menu. Just create your customize menu view, and put it in."
 
@@ -20,7 +20,8 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
-  s.author             = { "Leonardo Armero Barbosa" => "limpusra@gmail.com" }
+  s.author             = { "Leonardo Armero Barbosa" => "limpusra@gmail.com",
+                           "Luis Alejandro Barbosa Lee" => "alejobarbosalee@gmail.com" }
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   s.platform     = :ios, "11.0"

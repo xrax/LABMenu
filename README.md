@@ -53,12 +53,6 @@ You can now `import LABMenu` framework into your files.
 
 ## Usage
 
-At first, you will shall import LABMenu in all the classes that need it.
-
-```swift
-import LABMenu
-```
-
 Create your custom menu view. For example (load from xib):
 
 ![xib file](https://github.com/xrax/LABMenu/blob/master/MenuView.png)
@@ -87,7 +81,7 @@ class MyMenu: LABMenuContainer {
     }
     
     override init(delegate: LABMenuContainerDelegate) {
-        super.init(delegate: delegate)
+        super.init(menuProportionalWidth: 0.8, delegate: delegate)
         Bundle.main.loadNibNamed("MyMenu",
                                  owner: self,
                                  options: nil)
@@ -132,25 +126,46 @@ extension MyMenu: UITableViewDataSource, UITableViewDelegate {
 }
 ```
 
+Note in the super.init call a menuProportionalWidth parameter, it have allowed values between 0 and 1. Same value should will set in LABMenuViewController constructor below.
+
 In your storyboard embed your "ContainerViewController" in a NavigationController, and create all view controllers neededs.
 
 ![storyboard](https://github.com/xrax/LABMenu/blob/master/storyboard.png)
 
-Then just inherit the "ContainerViewController" from 'LABMenuViewController', and override viewDidLoad:
+Then just inherit the "ContainerViewController" from 'LABMenuViewController', and override viewDidLoad. You can set all LABMenuController atributes before super.viewDidLoad() call:
 
 ```swift
 class ViewController: LABMenuViewController {
 
 	override func viewDidLoad() {
+        // menuView properties
+        barColor = .lightGray
+        barTintColor = .white
+        menuProportionalWidth = 0.8
+        hideMenuButtonWhenShow = true
+        backPosition = .left
+
         super.viewDidLoad()
     }
 }
 ```
+* barColor: Set the navigationBarColor and can change statusBar style too. If you need a specific statusBar style should set it after super.viewDidLoad() call.
+* barTintColor: Set the tint of navigationItems.
+* menuProportionalWidth: Allow values between 0 and 1. Represent a proportional width respect to screen. Same value should was set in LABMenuContainer super.init() call above.
+* hideMenuButtonWhenShow: Set it as true if you want hide menu button when menu is open.
+* backPosition: Set the position of back button. If is .left menu button will be replaced to back button when appear a viewController different of root.
 
 In viewDidLoad function you must set your Menu class: 
 
 ```swift
 	override func viewDidLoad() {
+        // menuView properties
+        barColor = .lightGray
+        barTintColor = .white
+        menuProportionalWidth = 0.8
+        hideMenuButtonWhenShow = true
+        backPosition = .left
+
         super.viewDidLoad()
         
         menuView.setContentView(contentView: MyMenu(delegate: self))
@@ -158,6 +173,8 @@ In viewDidLoad function you must set your Menu class:
         setMenuButton(image: #imageLiteral(resourceName: "icMenu"))
         // Or this to set a customized BarButtonItem
         setMenuButton(button: UIBarButtonItem(customView: myCustomizedView))
+        // You can set the image in the BackButton else it show a simple '<'
+        setBackButton(button: #imageLiteral(resourceName: "icBackButton"))
         navigateToHome()
     }
 ```
@@ -165,6 +182,7 @@ In viewDidLoad function you must set your Menu class:
 - setContentView(contentView:), with your custom menu view.
 - setMenuButton(image:), with your menu button image.
 - setMenuButton(button:), with your customized menu button.
+- setBackButton(button:), with your back button image.
 - Instantiate your first ViewController and push it.
 
 
