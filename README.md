@@ -33,7 +33,7 @@ platform :ios, '11.0'
 use_frameworks!
 
 target 'MyProject' do
- pod 'LABMenu', :git => 'https://github.com/xrax/LABMenu.git'
+ pod 'LABMenu', '~> 0.2'
 end
 ```
 
