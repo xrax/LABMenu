@@ -81,7 +81,7 @@ As example, a viewControllers hierachy should looks like:
 This project have 4 screens: Launcher, Login, Home and Profile. Only Home and Profile are into Container.
 
 
-Step by step!
+* Step by step!
 
 Create your custom menu view. For example (load from xib):
 
