@@ -53,6 +53,36 @@ You can now `import LABMenu` framework into your files.
 
 ## Usage
 
+In order to usage this pod, you should understand it a bit. 
+
+You need a ViewController as Container where all this pod works.
+
+To works this container need some things:
+    * Inherits from LABMenuViewController.
+    * Set menuView properties before super.viewDidLoad() call.
+    * Create a customized menu inherits from LABMenuContainer.
+    * Set your customized menu as contentView calling menuView.setContentView(contentView:) function.
+    * Set your customized menu button with a UIBarButtonItem or just with an image.
+    * (Optional) Set your customized back button with a UIBarButtonItem. If you don't a "<" will show as default.
+    * Push your viewControllers using pushViewController() function in your Container ViewController.
+
+From this point, all viewControllers inside LABMenu are in an "internalNavigationController", but all viewControllers outside LABMenu are in the same navigationController as your Container ViewController.
+
+As example, a viewControllers hierachy should looks like:
+
+- NavigationController
+    - LauncherViewController
+    - LoginViewController
+    - ContainerViewController
+        - internalNavigationController
+            - HomeViewController
+            - ProfileViewController
+
+This project have 4 screens: Launcher, Login, Home and Profile. Only Home and Profile are into Container.
+
+
+Step by step!
+
 Create your custom menu view. For example (load from xib):
 
 ![xib file](https://github.com/xrax/LABMenu/blob/master/MenuView.png)
@@ -175,7 +205,10 @@ In viewDidLoad function you must set your Menu class:
         setMenuButton(button: UIBarButtonItem(customView: myCustomizedView))
         // You can set the image in the BackButton else it show a simple '<'
         setBackButton(button: #imageLiteral(resourceName: "icBackButton"))
-        navigateToHome()
+        
+        let homeViewController = self.storyboard!.instantiateViewController(withIdentifier: "HomeViewController")
+        self.pushViewController(homeViewController,
+                                animated: true)
     }
 ```
 
