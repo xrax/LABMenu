@@ -33,6 +33,7 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     
     private var backButton: UIBarButtonItem!
     private var menuButton: UIBarButtonItem!
+    private var rightButton: UIBarButtonItem!
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -118,6 +119,30 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     public func setBackButton(button: UIBarButtonItem) {
         self.backButton = button
     }
+    
+    public func setRightButton(image: UIImage) {
+        setRightButton(button: UIBarButtonItem.barButton(nil,
+                                                         image: image,
+                                                         titleColor: menuView.tint,
+                                                         font: UIFont.systemFont(ofSize: 12),
+                                                         inContext: self,
+                                                         selector: #selector(LABMenuViewController.onRightButtonClick)))
+    }
+    
+    public func setRightButton(button: UIBarButtonItem) {
+        self.rightButton = button
+    }
+    
+    @objc open func onRightButtonClick(){
+        navigationItem.rightBarButtonItem = nil
+        addBackButton()
+    }
+    
+    public func addRightButton() {
+        navigationItem.rightBarButtonItem = rightButton
+        navigationItem.rightBarButtonItem?.tintColor = menuView.tint
+    }
+    
     
     private func addBackButton() {
         if backButton == nil {
