@@ -240,6 +240,8 @@ All contributions are welcome. Just contact us.
 
 Leonardo Armero Barbosa
  - [limpusra@gmail.com](mailto:limpusra@gmail.com)
+Luis Alejandro Barbosa Lee
+ - [alejobarbosalee@gmail.com](mailto:alejobarbosalee@gmail.com)
 
 ## License (MIT)
 
