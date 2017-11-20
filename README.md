@@ -80,6 +80,7 @@ As example, a viewControllers hierachy should looks like:
 
 This project have 4 screens: Launcher, Login, Home and Profile. Only Home and Profile are into Container.
 
+An example are available in repo: https://github.com/xrax/MenuController
 
 * Step by step!
 
