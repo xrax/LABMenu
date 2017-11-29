@@ -26,6 +26,7 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
     open var menuProportionalWidth: NSNumber?
     open var hideMenuButtonWhenShow: Bool = false
     open var backPosition: ButtonPosition = .right
+    open var allowRepeatedViewControllers: Bool = false
     private var handlerView: UIView!
     
     // true to pop back to a selected viewController
@@ -165,7 +166,7 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
         } else {
             
             for queueViewController in internalNavigationController.viewControllers
-                where object_getClassName(queueViewController) == object_getClassName(viewController)
+                where !allowRepeatedViewControllers && object_getClassName(queueViewController) == object_getClassName(viewController)
             {
                 if shouldNavigateToPreviousViewController {
                     internalNavigationController.popToViewController(queueViewController, animated: true)
