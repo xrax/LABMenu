@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A04735D1FD83DB000C24464 /* LABMenuInternalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A04735C1FD83DB000C24464 /* LABMenuInternalViewController.swift */; };
 		A718304E1FB38E450013C34D /* LABMenuUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A718304D1FB38E450013C34D /* LABMenuUtils.swift */; };
 		A77DF0261FAA0CAF006A3885 /* LABMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A77DF01C1FAA0CAF006A3885 /* LABMenu.framework */; };
 		A77DF02B1FAA0CAF006A3885 /* LABMenuTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A77DF02A1FAA0CAF006A3885 /* LABMenuTests.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3A04735C1FD83DB000C24464 /* LABMenuInternalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LABMenuInternalViewController.swift; sourceTree = "<group>"; };
 		A718304D1FB38E450013C34D /* LABMenuUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LABMenuUtils.swift; sourceTree = "<group>"; };
 		A77DF01C1FAA0CAF006A3885 /* LABMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LABMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A77DF01F1FAA0CAF006A3885 /* LABMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LABMenu.h; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 				A77DF03C1FAA0F14006A3885 /* LABMenuViewController.swift */,
 				A77DF03E1FAA0F50006A3885 /* LABMenuView.xib */,
 				A718304D1FB38E450013C34D /* LABMenuUtils.swift */,
+				3A04735C1FD83DB000C24464 /* LABMenuInternalViewController.swift */,
 			);
 			path = LABMenu;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			files = (
 				A77DF0391FAA0EDC006A3885 /* LABMenuContainer.swift in Sources */,
 				A77DF03D1FAA0F14006A3885 /* LABMenuViewController.swift in Sources */,
+				3A04735D1FD83DB000C24464 /* LABMenuInternalViewController.swift in Sources */,
 				A77DF03B1FAA0F01006A3885 /* LABMenuView.swift in Sources */,
 				A77DF0371FAA0EBD006A3885 /* LABMenuExtensions.swift in Sources */,
 				A718304E1FB38E450013C34D /* LABMenuUtils.swift in Sources */,

@@ -190,8 +190,8 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
             self.view.bringSubview(toFront: menuView)
         } else {
             
-            for queueViewController in internalNavigationController.viewControllers
-                where !allowRepeatedViewControllers && object_getClassName(queueViewController) == object_getClassName(viewController)
+            for queueViewController in internalNavigationController.viewControllers as! [LABMenuInternalViewController]
+                where !queueViewController.allowRepeatedViewControllers && object_getClassName(queueViewController) == object_getClassName(viewController)
             {
                 if shouldNavigateToPreviousViewController {
                     internalNavigationController.popToViewController(queueViewController, animated: true)
