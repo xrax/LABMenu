@@ -190,14 +190,17 @@ open class LABMenuViewController: UIViewController, UIGestureRecognizerDelegate,
             self.view.bringSubview(toFront: menuView)
         } else {
             
-            for queueViewController in internalNavigationController.viewControllers as! [LABMenuInternalViewController]
-                where !queueViewController.allowRepeatedViewControllers && object_getClassName(queueViewController) == object_getClassName(viewController)
-            {
-                if shouldNavigateToPreviousViewController {
-                    internalNavigationController.popToViewController(queueViewController, animated: true)
-                    removeBackButton()
+            let internalViewControllers = internalNavigationController.viewControllers
+            for index in stride(from: 0, to: internalViewControllers.count - 1, by: 1){
+                let queueViewController = internalViewControllers[index] as! LABMenuInternalViewController
+                if  !queueViewController.allowRepeatedViewControllers && object_getClassName(queueViewController) == object_getClassName(viewController)
+                {
+                    if shouldNavigateToPreviousViewController {
+                        internalNavigationController.popToViewController(queueViewController, animated: true)
+                        removeBackButton()
+                    }
+                    return
                 }
-                return
             }
             
             internalNavigationController.pushViewController(viewController, animated: animated)
